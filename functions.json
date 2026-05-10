@@ -15,10 +15,27 @@
         "generate_random_number": "generate_random_number(low, high, is_float=False, seed=None) \u2013 returns an int or float; e.g. generate_random_number(1,100) -> 42, generate_random_number(0.0,1.0,is_float=True) -> 0.374"
     },
     "demo.py": {
-        "api_to_create": "Sends a task to the LLM and returns the raw JSON code response. Usage: api_to_create(\"create a fibonacci module\")",
-        "make_new_function": "Generates or updates .py files and the functions.json registry based on a task string. Usage: make_new_function(\"add a factorial utility\")",
-        "think": "Plans whether existing functions suffice or new code is needed; returns a JSON string with either a \"solution\" or a \"fetch\" directive. Usage: think(\"I need to sort a list\")",
-        "fetch_file_content": "Reads and returns the full text of a file. Usage: fetch_file_content(\"demo.py\")",
-        "assistant": "Top-level orchestrator: loops between think/fetch until a solution is ready, then calls make_new_function. Usage: assistant(\"I want a math utilities module\")"
+        "safe_json_loads": "Safely parses JSON from LLM responses with markdown removal, control character cleanup, and retry logic. Usage: safe_json_loads(response_text)",
+        "Api_to_create": "Makes API calls to generate code based on task and existing functions. Usage: Api_to_create(task_string)",
+        "make_new_function": "Creates or updates Python files based on API response and updates functions.json. Usage: make_new_function(task_string)",
+        "think": "Plans solution by asking model to think through the task. Usage: think(task_string)",
+        "fetch_file_content": "Fetches content of a file for planning phase. Usage: fetch_file_content('filename.py')",
+        "self_diagnose": "Self-diagnostic that checks own code quality and identifies improvements. Usage: self_diagnose()",
+        "assistant": "Orchestrates entire workflow: thinks, fetches files if needed, executes solutions. Usage: assistant('your task here')",
+        "self_improvement_entry": "Entry point that runs self-diagnosis and improvement cycle. Usage: run demo.py directly"
+    },
+    "self_improvement.py": {
+        "analyze_code_quality": "Analyzes Python file for style issues, unused imports, and duplicated logic using AST and flake8. Usage: analyze_code_quality('file.py')",
+        "suggest_refactorations": "Generates improvement suggestions from analysis report. Usage: suggest_refactorations(report_dict)",
+        "apply_refactor": "Applies refactorings using Api_to_create and writes back to file. Usage: apply_refactor('file.py', ['suggestion1', 'suggestion2'])",
+        "self_improve": "Orchestrates self-improvement for all Python files. Idempotent - exits quietly if no changes. Usage: self_improve()",
+        "get_python_files": "Retrieves list of Python files from project directory and functions.json. Usage: get_python_files()",
+        "run_self_improvement_tests": "Runs unit tests for self_improvement module. Usage: run_self_improvement_tests()"
+    },
+    "assistant.py": {
+        "main": "Calls self_improve() when run. Usage: python assistant.py"
+    },
+    "test_self_improvement.py": {
+        "TestSelfImprovement": "Unit tests verifying analyze_code_quality, suggest_refactorations, apply_refactor idempotency, and get_python_files. Usage: python test_self_improvement.py"
     }
 }

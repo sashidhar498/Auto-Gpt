@@ -1,0 +1,24 @@
+{
+    "fibonacci.py": {
+        "fibonacci_sequence": "fibonacci_sequence(n) \u2013 returns list of first n Fibonacci numbers, e.g. fibonacci_sequence(10) -> [0,1,1,2,3,5,8,13,21,34]",
+        "_fibonacci_helper": "_fibonacci_helper(n) \u2013 internal memoized recursive helper, e.g. _fibonacci_helper(10) -> 55",
+        "fibonacci_get_nth": "fibonacci_get_nth(n) \u2013 returns nth Fibonacci number (0\u2011indexed), e.g. fibonacci_get_nth(10) -> 55",
+        "fibonacci_sum": "fibonacci_sum(n) \u2013 sum of first n Fibonacci numbers, e.g. fibonacci_sum(10) -> 88",
+        "fibonacci_add": "fibonacci_add(i, j) \u2013 sum of fib(i) and fib(j), e.g. fibonacci_add(5,7) -> 18",
+        "fibonacci_add_same": "fibonacci_add_same(n) \u2013 doubles fib(n), e.g. fibonacci_add_same(6) -> 16"
+    },
+    "random_utils.py": {
+        "generate_random_integer": "generate_random_integer(low, high, seed=None) \u2013 returns a random integer between low and high inclusive; e.g. generate_random_integer(1,100) -> 42",
+        "generate_random_float": "generate_random_float(low, high, seed=None) \u2013 returns a random float between low and high; e.g. generate_random_float(0.0,1.0) -> 0.374",
+        "random_choice": "random_choice(sequence, seed=None) \u2013 picks a random element from a sequence; e.g. random_choice([1,2,3]) -> 2",
+        "generate_random_list": "generate_random_list(size, low, high, seed=None) \u2013 returns a list of random integers; e.g. generate_random_list(5,1,10) -> [3,7,1,9,4]",
+        "generate_random_number": "generate_random_number(low, high, is_float=False, seed=None) \u2013 returns an int or float; e.g. generate_random_number(1,100) -> 42, generate_random_number(0.0,1.0,is_float=True) -> 0.374"
+    },
+    "demo.py": {
+        "api_to_create": "Sends a task to the LLM and returns the raw JSON code response. Usage: api_to_create(\"create a fibonacci module\")",
+        "make_new_function": "Generates or updates .py files and the functions.json registry based on a task string. Usage: make_new_function(\"add a factorial utility\")",
+        "think": "Plans whether existing functions suffice or new code is needed; returns a JSON string with either a \"solution\" or a \"fetch\" directive. Usage: think(\"I need to sort a list\")",
+        "fetch_file_content": "Reads and returns the full text of a file. Usage: fetch_file_content(\"demo.py\")",
+        "assistant": "Top-level orchestrator: loops between think/fetch until a solution is ready, then calls make_new_function. Usage: assistant(\"I want a math utilities module\")"
+    }
+}
